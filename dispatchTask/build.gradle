@@ -1,0 +1,32 @@
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "http://dl.bintray.com/gautierlevert/maven" }
+    }
+
+    dependencies {
+        classpath 'org.mybop.gradle:java-merger:0.3'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'java-merger'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+merge {
+    mainClassName = "Player"
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.mockito:mockito-core:2.7.22'
+}
